@@ -1,0 +1,13 @@
+<package>
+  <description brief="yahboom_car_description">
+
+     yahboom_car_description
+
+  </description>
+  <author>ARR Robot User</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/yahboom_car_description</url>
+  <depend package="rospy"/>
+
+</package>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<launch>
+     <arg
+    name="model" />
+  <param
+    name="robot_description"
+    textfile="$(find yahboom_car_description)/urdf/yahboomcar_X3.urdf" />
+  <!--node
+    name="joint_state_publisher_gui"
+    pkg="joint_state_publisher_gui"
+    type="joint_state_publisher_gui" /-->
+  <node
+    name="robot_state_publisher"
+    pkg="robot_state_publisher"
+    type="robot_state_publisher" />
+  <node
+    name="rviz"
+    pkg="rviz"
+    type="rviz"
+    args="-d $(find yahboom_car_description)/rviz/yahboom_car.rviz" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+
+  <node name="spawn_urdf"
+    pkg="gazebo_ros" 
+    type="spawn_model" 
+    args="-file $(find yahboom_car_description)/urdf/yahboomcar_X3.urdf -urdf -z 1 -model yahboomcar_X3" />
+    
+</launch>
