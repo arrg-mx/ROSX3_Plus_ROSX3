@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<robot name="dofbot_arm">
+
+ <!--Material definition-->
+    <material name="eerie_black">
+        <color rgba="0.1294117647058824 0.1450980392156863 0.1607843137254902 1.0" />
+    </material>
+    <material name="pigment_green">
+        <color rgba="0 0.627450980392157 0.235294117647059 1.0" />
+    </material>
+    <material name="oxford_blue">
+        <color rgba="0.1058823529411765 0.1490196078431373 0.2196078431372549 1.0" />
+    </material>
+    <material name="yinmn_blue">
+        <color rgba="0.2549019607843137 0.3529411764705882 0.4666666666666667 1.0" />
+    </material>
+    <material name="silver_lake_blue">
+        <color rgba="0.4666666666666667 0.5529411764705882 0.6627450980392157 1.0" />
+    </material>
+
+ <!--Dofbot description-->
+    <!--Dofbot Arm Base Link-->
+    <link name="base_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/base_link.STL" />
+            </geometry>
+            <material name="eerie_black" />
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/base_link.STL" />
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-0.0304416859098744 4.23384368655101E-05 0.0448234503408059" rpy="0 0 0" />
+            <mass value="1.0754239466482" />
+            <inertia ixx="0.0208831789264125" ixy="2.4618093127858E-06" ixz="0.00616019290028669" iyy="0.0265621377486244" iyz="-1.10079499865282E-06" izz="0.0129535610833954" />
+        </inertial>
+    </link>
+    <!-- Dofbot Arm Link 01 -->
+    <link name="arm_link_01">
+        <inertial>
+            <origin xyz="1.99179507982521E-05 -5.98354652829568E-05 0.0114289358828097" rpy="0 0 0" />
+            <mass value="0.0279545499871709" />
+            <inertia ixx="1.19144359314975E-05" ixy="-9.26068510046816E-09" ixz="3.16060516198683E-09" iyy="1.05642517915377E-05" iyz="2.69674403668579E-08" izz="1.49639510661413E-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/arm_link1.STL" />
+            </geometry>
+            <material name="pigment_green" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/arm_link1.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <!-- Dofbot Arm Joint 01 (base_link -> arm_link_01) -->
+    <joint name="arm_joint_01" type="revolute">
+        <origin xyz="0 0 0.06605" rpy="-0.010805 0 1.5" />
+        <parent link="base_link" />
+        <child link="arm_link_01" />
+        <axis xyz="0 0 1" />
+        <limit effort="30" velocity="1.0" lower="-1.5708" upper="1.5708" />
+    </joint>
+    <!-- Dofbot Arm Link 02 -->
+    <link name="arm_link_02">
+        <inertial>
+            <origin xyz="0.024903 -0.0022632 -0.00066663" rpy="0 0 0" />
+            <mass value="0.031605" />
+            <inertia ixx="5.8495E-06" ixy="-8.8092E-07" ixz="1.5336E-07" iyy="2.667E-05" iyz="7.1365E-09" izz="2.4695E-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/arm_link2.STL" />
+            </geometry>
+            <material name="pigment_green" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/arm_link2.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <!-- Dofbot Arm Joint 02 (arm_link_01 -> arm_link_02) -->
+    <joint name="arm_joint_02" type="revolute">
+        <origin xyz="0 0 0.0405" rpy="-1.5708 0 0" />
+        <parent link="arm_link_01" />
+        <child link="arm_link_02" />
+        <axis xyz="0 0 -1" />
+        <limit lower="-1.5708" upper="1.5708" effort="100" velocity="1" />
+    </joint>
+    <!-- Dofbot Arm Link 03 -->
+    <link name="arm_link_03">
+        <inertial>
+            <origin xyz="0.024903 -0.0022634 -0.0013962" rpy="0 0 0" />
+            <mass value="0.031605" />
+            <inertia ixx="5.8492E-06" ixy="-8.8063E-07" ixz="1.4331E-07" iyy="2.667E-05" iyz="8.9675E-09" izz="2.4695E-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/arm_link3.STL" />
+            </geometry>
+            <material name="pigment_green" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/arm_link3.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <!-- Dofbot Arm Joint 03 (arm_link_02 -> arm_link_03) -->
+    <joint name="arm_joint_03" type="revolute">
+        <origin xyz="0 -0.0829 0" rpy="0 0 0" />
+        <parent link="arm_link_02" />
+        <child link="arm_link_03" />
+        <axis xyz="0 0 -1" />
+        <limit lower="-1.5708" upper="1.5708" effort="100" velocity="1" />
+    </joint>
+    <!-- Dofbot Arm Link 04 -->
+    <link name="arm_link_04">
+        <inertial>
+            <origin xyz="0.036246 0.0023413 -0.0019655" rpy="0 0 0" />
+            <mass value="0.049766" />
+            <inertia ixx="1.1857E-05" ixy="-6.5371E-06" ixz="-4.1044E-08" iyy="3.6323E-05" iyz="-1.2132E-07" izz="4.1769E-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/arm_link4.STL" />
+            </geometry>
+            <material name="pigment_green" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/arm_link4.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <!-- Dofbot Arm Joint 04 (arm_link_03 -> arm_link_04) -->
+    <joint name="arm_joint_04" type="revolute">
+        <origin xyz="0 -0.0829 0" rpy="0 0 0" />
+        <parent link="arm_link_03" />
+        <child link="arm_link_04" />
+        <axis xyz="0 0 -1" />
+        <limit lower="-1.5708" upper="1.5708" effort="100" velocity="1" />
+    </joint>
+    <!-- Dofbot Arm Link 05 -->
+    <link name="arm_link_05">
+        <inertial>
+            <origin xyz="0.0023228 0.018169 0.028684" rpy="0 0 0" />
+            <mass value="0.04069" />
+            <inertia ixx="1.0627E-05" ixy="-3.0402E-07" ixz="-1.9524E-07" iyy="9.6306E-06" iyz="-1.3265E-06" izz="1.3298E-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/arm_link5.STL" />
+            </geometry>
+            <material name="eerie_black" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/arm_link5.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <!-- Dofbot Arm Joint 05 (arm_link_04 -> arm_link_05) -->
+    <joint name="arm_joint_05" type="revolute">
+        <origin xyz="-0.00215 -0.17455 0" rpy="1.5708 0 0" />
+        <parent link="arm_link_04" />
+        <child link="arm_link_05" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1.5708" upper="3.14159" effort="100" velocity="1" />
+    </joint>
+    <!-- Dofbot Arm Gripper Assembly-->
+    <!-- Dofbot Arm Gripper Right Grip finger link 01 -->
+    <link name="rgrip_finger01">
+        <inertial>
+            <origin xyz="0.00653227489887718 0.000416767821288678 0.000980984132845697" rpy="0 0 0" />
+            <mass value="0.00117883201961805" />
+            <inertia ixx="3.30415008842026E-08" ixy="8.05114594599862E-09" ixz="-1.46441757999184E-10" iyy="1.67254031134004E-07" iyz="-9.31932225400159E-12" izz="1.99277285249309E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/rgrip_finger1.STL" />
+            </geometry>
+            <material name="yinmn_blue" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/rgrip_finger1.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <!-- Dofbot Arm Gripper Gripper Joint 01 (arm_link_05 -> rgrip_finger01) -->
+    <!-- 'gripper_joint' is a mandatory MoveIt's name -->
+    <joint name="grip_joint" type="revolute">
+        <origin xyz="-0.0035 -0.012625 -0.0685" rpy="0 -1.5708 0" />
+        <parent link="arm_link_05" />
+        <child link="rgrip_finger01" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1.54" upper="0" effort="100" velocity="1" />
+    </joint>
+    <!-- Dofbot Arm Gripper Right Grip finger link 02 -->
+    <link name="rgrip_finger02">
+        <inertial>
+            <origin xyz="0.021158 0.0063295 -0.0030251" rpy="0 0 0" />
+            <mass value="0.0024469" />
+            <inertia ixx="5.188E-08" ixy="-1.2303E-07" ixz="-1.2978E-09" iyy="6.3204E-07" iyz="-3.8824E-10" izz="6.6364E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/rgrip_finger2.STL" />
+            </geometry>
+            <material name="oxford_blue" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/rgrip_finger2.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <!-- Dofbot Arm Gripper Right finger Joint 01 (rgrip_finger01 -> rgrip_finger02) -->
+    <!-- 'mimic_joint' -->
+    <joint name="rfinger_joint_01" type="continuous">
+        <origin xyz="0.03 -0.00075429 0" rpy="0 0 0" />
+        <parent link="rgrip_finger01" />
+        <child link="rgrip_finger02" />
+        <axis xyz="0 0 1" />
+        <mimic joint="grip_joint" multiplier="-1" />
+    </joint>
+    <!-- Dofbot Arm Gripper Right Grip finger link 03 -->
+    <link name="rgrip_finger03">
+        <inertial>
+            <origin xyz="0.014355 1.1499E-05 -0.0033992" rpy="0 0 0" />
+            <mass value="0.00087627" />
+            <inertia ixx="2.0534E-08" ixy="-1.0235E-10" ixz="1.074E-09" iyy="1.4825E-07" iyz="8.7073E-13" izz="1.3089E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/rgrip_finger3.STL" />
+            </geometry>
+            <material name="silver_lake_blue" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/rgrip_finger3.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <!-- Dofbot Arm Gripper Right finger Joint 02 (arm_link_05 -> rgrip_finger03) -->
+    <!-- 'mimic_joint' -->
+    <joint name="rfinger_joint_02" type="continuous">
+        <origin xyz="-0.0035 -0.0045 -0.0505" rpy="0 -1.5708 0" />
+        <parent link="arm_link_05" />
+        <child link="rgrip_finger03" />
+        <axis xyz="0 0 1" />
+        <mimic joint="grip_joint" multiplier="1" />
+    </joint>
+    <!-- Dofbot Arm Gripper Left Grip finger link 01 -->
+    <link name="lgrip_finger01">
+        <inertial>
+            <origin xyz="0.00628617364795481 -0.000318530407893543 0.00100000338924466" rpy="0 0 0" />
+            <mass value="0.00121010771282268" />
+            <inertia ixx="3.18226609060835E-08" ixy="-8.06236004452728E-09" ixz="3.99064856025629E-14" iyy="1.69267681405915E-07" iyz="1.87039773440675E-14" izz="2.00283878176223E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/lgrip_finger1.STL" />
+            </geometry>
+            <material name="yinmn_blue" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/lgrip_finger1.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <!-- Dofbot Arm Gripper Left finger grip joint 01 (arm_link_05 -> lgrip_finger01) -->
+    <!-- 'mimic_joint' -->
+    <joint name="lfinger_grip_joint_01" type="continuous">
+        <origin xyz="-0.0035 0.012375 -0.0685" rpy="0 -1.5708 0" />
+        <parent link="arm_link_05" />
+        <child link="lgrip_finger01" />
+        <axis xyz="0 0 1" />
+        <mimic joint="grip_joint" multiplier="-1" />
+    </joint>
+    <!-- Dofbot Arm Gripper Left Grip finger link 02 -->
+    <link name="lgrip_finger02">
+        <inertial>
+            <origin xyz="0.021159 -0.0063248 -0.0030251" rpy="0 0 0" />
+            <mass value="0.0024469" />
+            <inertia ixx="5.1826E-08" ixy="1.229E-07" ixz="-1.2979E-09" iyy="6.321E-07" iyz="3.8796E-10" izz="6.6364E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/lgrip_finger2.STL" />
+            </geometry>
+            <material name="oxford_blue" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/lgrip_finger2.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <!-- Dofbot Arm Gripper Left finger grip joint 02 (lgrip_finger01 -> lgrip_finger02) -->
+    <!-- 'mimic_joint' -->
+    <joint name="lfinger_grip_joint_02" type="continuous">
+        <origin xyz="0.03 0.00065104 0" rpy="0 0 0" />
+        <parent link="lgrip_finger01" />
+        <child link="lgrip_finger02" />
+        <axis xyz="0 0 1" />
+        <mimic joint="grip_joint" multiplier="1" />
+    </joint>
+    <!-- Dofbot Arm Gripper Left Grip finger link 03 -->
+    <link name="lgrip_finger03">
+        <inertial>
+            <origin xyz="0.014354 -7.4795E-05 -0.0033992" rpy="0 0 0" />
+            <mass value="0.00087627" />
+            <inertia ixx="2.0537E-08" ixy="6.6549E-10" ixz="1.074E-09" iyy="1.4825E-07" iyz="-5.5867E-12" izz="1.3089E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/lgrip_finger3.STL" />
+            </geometry>
+            <material name="silver_lake_blue" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/lgrip_finger3.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <!-- Dofbot Arm Gripper Left finger grip joint 03 (arm_link_05 -> lgrip_finger03) -->
+    <!-- 'mimic_joint' -->
+    <joint name="lfinger_grip_joint_03" type="continuous">
+        <origin xyz="-0.0035 0.0045 -0.0505" rpy="0 -1.5708 0" />
+        <parent link="arm_link_05" />
+        <child link="lgrip_finger03" />
+        <axis xyz="0 0 1" />
+        <mimic joint="grip_joint" multiplier="-1" />
+    </joint>
+
+ <!--Gazebo definition-->
+    <!--Dofbot-->
+    <gazebo reference="base_link">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="arm_link_01">
+        <material>Gazebo/Green</material>
+    </gazebo>
+    <gazebo reference="arm_link_02">
+        <material>Gazebo/Green</material>
+    </gazebo>
+    <gazebo reference="arm_link_03">
+        <material>Gazebo/Green</material>
+    </gazebo>
+    <gazebo reference="arm_link_04">
+        <material>Gazebo/Green</material>
+    </gazebo>
+    <gazebo reference="arm_link_05">
+        <material>Gazebo/Green</material>
+    </gazebo>
+    <!--Gripper-->
+    <gazebo reference="rgrip_finger01">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="rgrip_finger02">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="rgrip_finger03">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="lgrip_finger01">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="lgrip_finger02">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="lgrip_finger03">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+ <!--Sensing-->
+
+    <!-- Mono - camera sensor -->
+    <link name="mono_link">
+        <inertial>
+            <origin xyz="5.8458E-05 0.0095015 -0.0014824" rpy="0 0 0" />
+            <mass value="0.0097589" />
+            <inertia ixx="3.3488E-06" ixy="1.3667E-08" ixz="6.4235E-09" iyy="1.8662E-06" iyz="-1.0265E-07" izz="2.5696E-06" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/sensor/visual/mono_link.STL" />
+            </geometry>
+            <material name="oxford_blue" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/sensor/visual/mono_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="mono_joint" type="fixed">
+        <origin xyz="-0.0481 -0.05145 -0.0022" rpy="1.5708 0 0" />
+        <parent link="arm_link_04" />
+        <child link="mono_link" />
+    </joint>
+
+ <!--Trasmisión-->
+    <transmission name="trans_arm_joint_01">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="arm_joint_01">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="arm_joint_01_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>  
+
+    <transmission name="trans_arm_joint_02">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="arm_joint_02">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="arm_joint_02_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="trans_arm_joint_03">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="arm_joint_03">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="arm_joint_03_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="trans_arm_joint_04">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="arm_joint_04">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="arm_joint_04_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="trans_arm_joint_05">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="arm_joint_05">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="arm_joint_05_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="trans_grip_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="grip_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="grip_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="trans_rfinger_joint_01">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="rfinger_joint_01">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="rfinger_joint_01_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="trans_rfinger_joint_02">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="rfinger_joint_02">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="rfinger_joint_02_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="trans_lfinger_grip_joint_01">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="lfinger_grip_joint_01">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="lfinger_grip_joint_01_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="trans_lfinger_grip_joint_02">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="lfinger_grip_joint_02">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="lfinger_grip_joint_02_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="trans_lfinger_grip_joint_03">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="lfinger_grip_joint_03">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="lfinger_grip_joint_03_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+ <!--Pluging control-->
+    <gazebo>
+        <plugin name="control" filename="libgazebo_ros_control.so"/>
+    </gazebo>
+
+
+</robot>
+

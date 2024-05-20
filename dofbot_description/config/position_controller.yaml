@@ -1,0 +1,43 @@
+trans_arm_joint_01:
+  type: "position_controllers/JointPositionController"
+  joint: arm_joint_01
+  
+trans_arm_joint_02:
+  type: "position_controllers/JointPositionController"
+  joint: arm_joint_02
+
+trans_arm_joint_03:
+  type: "position_controllers/JointPositionController"
+  joint: arm_joint_03
+
+trans_arm_joint_04:
+  type: "position_controllers/JointPositionController"
+  joint: arm_joint_04
+
+trans_arm_joint_05:
+  type: "position_controllers/JointPositionController"
+  joint: arm_joint_05
+
+trans_grip_joint:
+  type: "position_controllers/JointPositionController"
+  joint: grip_joint
+
+trans_rfinger_joint_01:
+  type: "position_controllers/JointPositionController"
+  joint: rfinger_joint_01
+
+trans_rfinger_joint_02:
+  type: "position_controllers/JointPositionController"
+  joint: rfinger_joint_02
+
+trans_lfinger_grip_joint_01:
+  type: "position_controllers/JointPositionController"
+  joint: lfinger_grip_joint_01
+
+trans_lfinger_grip_joint_02:
+  type: "position_controllers/JointPositionController"
+  joint: lfinger_grip_joint_02
+
+trans_lfinger_grip_joint_03:
+  type: "position_controllers/JointPositionController"
+  joint: lfinger_grip_joint_03
