@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 
+<robot name="Omni_bot" xmlns:xacro="http://ros.org/wiki/xacro">
 
-<robot name="yahboomcar_X3" xmlns:xacro="http://ros.org/wiki/xacro">
+
     <link name="base_footprint"/>
     <link name="imu_link"/>
     <link name="base_link">
@@ -217,30 +218,5 @@
         <parent link="base_link"/>
         <child link="camera_link"/>
     </joint>
-
-    <!-- Plugin robot omnidireccional Gazebo -->
-    
-    <gazebo>
-      <plugin name="gazebo_ros_mecanum_diff_drive" filename="libgazebo_ros_mecanum_drive.so">
-        <commandTopic>cmd_vel</commandTopic>
-        <odometryTopic>odom</odometryTopic>
-        <odometryFrame>odom</odometryFrame>
-        <robotBaseFrame>base_footprint</robotBaseFrame>
-        <LeftRear>back_left_wheel</LeftRear>
-        <LeftFront>front_left_wheel</LeftFront>
-        <RightFront>front_right_wheel</RightFront>
-        <RightRear>back_right_wheel</RightRear>
-        <odometryRate>20</odometryRate>      
-        <publishWheelTF>true</publishWheelTF>
-        <publishWheelJointState>true</publishWheelJointState>
-        <WheelTorque>1</WheelTorque>
-        <WheelSeparationW>0.17</WheelSeparationW>
-        <WheelSeparationL>0.16</WheelSeparationL>
-        <wheelAccel>5</wheelAccel>
-        <wheelDiameter>0.13</wheelDiameter>
-        <publishOdom>true</publishOdom>
-        <isRollerModel>true</isRollerModel>
-      </plugin>
-    </gazebo>
 
 </robot>

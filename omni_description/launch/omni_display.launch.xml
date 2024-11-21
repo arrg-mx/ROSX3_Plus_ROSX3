@@ -1,6 +1,6 @@
 <launch>
     <let name="urdf_path"
-        value="$(find-pkg-share omni_description)/urdf/omni_urdf.xacro" />
+        value="$(find-pkg-share omni_description)/urdf/omni_velocity_controller.xacro" />
     <let name="rviz_config"
         value="$(find-pkg-share omni_description)/rviz/omni_rviz.rviz" />
     <node pkg="robot_state_publisher" exec="robot_state_publisher">
