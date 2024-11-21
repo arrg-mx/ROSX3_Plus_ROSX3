@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<robot name="dofbot_arm">
+<robot name="dofbot_arm" xmlns:xacro="http://ros.org/wiki/xacro">
 
  <!--Material definition-->
     <material name="eerie_black">
@@ -20,7 +20,7 @@
 
  <!--Dofbot description-->
     <!--Dofbot Arm Base Link-->
-    <link name="base_link">
+    <link name="arm_base_link">
         <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
             <geometry>
@@ -64,7 +64,7 @@
     <!-- Dofbot Arm Joint 01 (base_link -> arm_link_01) -->
     <joint name="arm_joint_01" type="revolute">
         <origin xyz="0 0 0.06605" rpy="-0.010805 0 1.5" />
-        <parent link="base_link" />
+        <parent link="arm_base_link" />
         <child link="arm_link_01" />
         <axis xyz="0 0 1" />
         <limit effort="30" velocity="1.0" lower="-1.5708" upper="1.5708" />
@@ -369,7 +369,7 @@
 
  <!--Gazebo definition-->
     <!--Dofbot-->
-    <gazebo reference="base_link">
+    <gazebo reference="arm_base_link">
         <material>Gazebo/Black</material>
     </gazebo>
     <gazebo reference="arm_link_01">

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<robot name="robot_scara" xmlns:xacro="http://ros.org/wiki/xacro" >
+
+    <xacro:property name="package_name" value="omni_dofbot_description"/>
+
+    <xacro:include filename="$(find ${package_name})/urdf/omni_dofbot_urdf.xacro"/>    
+
+</robot>

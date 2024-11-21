@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<robot name="omni_dofbot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find omni_description)/urdf/omni_urdf.xacro" />  
+  <xacro:include filename="$(find dofbot_description)/urdf/dofbot_arm_urdf.xacro" />
+
+  <joint name="omni_to_dofbot_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="arm_base_link" />
+    <origin xyz="0.1 0 0.15" rpy="0 0 -1.57" />
+  </joint>
+
+</robot>
