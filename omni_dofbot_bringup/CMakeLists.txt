@@ -22,13 +22,12 @@ install(
   DESTINATION share/${PROJECT_NAME}/
 )
 
-
 # Install Python modules
 ament_python_install_package(${PROJECT_NAME})
 
 # Install Python executables #They must start with the shebag tag
 install(PROGRAMS
-
+  
   DESTINATION lib/${PROJECT_NAME} )
 
 ament_package()
