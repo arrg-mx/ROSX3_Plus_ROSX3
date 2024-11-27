@@ -35,9 +35,13 @@
             <remapping>~/out:=scan</remapping>
         </ros>
         <output_type>sensor_msgs/LaserScan</output_type>
-        <frame_name>P</frame_name>
+        <frame_name>laser_link</frame_name>
       </plugin>
     </sensor>
-  </gazebo>
 
+  </gazebo>
+      <gazebo reference="laser_link" >
+        <material>Gazebo/Blue</material>
+    </gazebo>
+    
 </robot>
