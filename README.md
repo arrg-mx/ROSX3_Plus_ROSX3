@@ -1,24 +1,16 @@
-# ROSX3_Plus_ROSX3
-Repositorio relacionados con la implementación de los robots móviles ROSX3 Plus y ROSX3.
+# OMNI_DOFBOT
+Repositorio relacionado con la implementacion de un robot movil manipulador omnidireccional en ros2, el reposiorio incluye 6 paquetes distintos los cuales 
+describen y muestran al robot de manera independiente y como uno solo.
 
-## URDF
-En la carpeta urdf se encuentran 2 archivos que contienen la descripción del robot. El archivo yahboomcar_X3 corresponde al robot ROSX3, mientras que full_yahboomcar_X3 corresponde al robot ROSX3 Plus.
-En este segundo archvivo, se definen los siguientes aspectos:
+## omni_description
+Este paquete contiene los elementos necesarios para mostrar la descripcion del robot en rviz, así como los controladores para su uso en gazebo.
 
-- Materiales: son aquellos que se utilizarán para mostrar el robot en Gazebo
-- Eslabones: se define el origen del eslabón, la ruta para la malla que describe su geometría, intercia, masa y color. 
-- Juntas: se definen los eslabones que están siendo unidos y el origen.
-- Transmisiones: estos elementos hacen referencias a las juntas y actuadores que serán utilizados para controlar el robot en Gazebo una vez que se implemente el plugin correspondiente.
-- Plugin: se añade el plugin para controlar el robot. Con la implementación actual aún no es posible esto. En el caso del robot ROSX3 se utiliza un plugin para bases omnidireccionales; sin embargo, se especula que éste se encuentra desactualizado. En el caso del robot ROSX3 Plus se incluyó el plugin "control" que se encuentra en libgazebo_ros_control.so
+Para visualizar el robot, se puede utilizar el archivo omni_display_launch.xml, el cual cargara el robot con sus elementos base en rviz.
 
-Todo lo anterior se define para 3 elementos básicos del robot:
-- Brazo robótico y gripper.
-- Base móvil.
-- Sensores.
+En la carpeta config se encuentra el archivo de definicion de los controladores del robot omnidireccional: omni_velocitu_controller.yaml
 
-## Launch
-En la carpeta launch se encuentran 2 archivos, que permiten visualizar en RViz y en Gazebo al robot móvil ROSX3 Plus y ROSX3. Display.launch corresponde al primer robot y full_robot_display al segundo. 
-- Como parámetro se incluye en ambos launch la ruta con la descripción del robot, la cual está definida en los archivos urdf mencionados con anterioridad.
-- Se inicializa el nodo correspondiente al publicador de estados del robot, rviz y Gazebo. En el caso del robot ROSX3 Plus, el bloque de código correspondiente a Gazebo se encuentra comentado, puesto que ocasionaba problemas en RViz y como resultado el brazo robótico no era incluido.
-- El nodo joint_state_publisher_gui permite inicializar una interfaz gráfica a través de la cual pueden enviarse posiciones al robot. 
-- Finalmente, se encuentra incluido también un nodo asociado al controlador del robot. Como argumentos se pasan los nombres de las transmisiones definidas en el urdf. 
+En la carpeta meshes se pueden observar las mallas de la estructura del robot, así como las mallas de los sensores.
+
+Dentro de la carpeta URDF se tienen los diversos archivos urdf que conforman al robot, ya sean sensores o archivos de configuracion de gazebo.
+Dentro de esta, se encuentra el archivo omni_velocity_controller.xacro, el cual se encarga de juntar estos archivos y generar un urdf de la descripcion
+completa del robot.

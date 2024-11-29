@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" >
+
+
+    <!--este codigo no muestra imagen de profundidad-->
+
+
+    <link name="camera_link">
+    </link>
+
+    <joint name="base_camera_joint" type="fixed">
+      <origin xyz="0.057105 1.7948E-05 0.03755" rpy="0 0 0"/>
+        <parent link="base_link" />
+        <child link="camera_link" />
+    </joint>
+
+    <link name="camera_optical_link" />
+
+    <joint name="camera_optical_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="-1.57 0 -1.57"/>
+        <parent link="camera_link"/>
+        <child link="camera_optical_link"/>
+    </joint>
+
+    <gazebo reference="camera_link">
+        <sensor name="camera_sensor" type="depth">
+            <pose>0 0 0 0 0 0</pose>
+            <visualize>true</visualize>
+            <update_rate>10.0</update_rate>
+            <camera>
+                <format>R8G8B8</format>
+                <width>640</width>
+                <height>480</height>
+            </camera>
+            <clip>
+                <near>0.05</near>
+                <far>8.0</far>
+            </clip>
+            <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+                <frame_name>camera_optical_link</frame_name>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+
+</robot>
