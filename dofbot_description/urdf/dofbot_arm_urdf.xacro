@@ -367,202 +367,46 @@
         <mimic joint="grip_joint" multiplier="-1" />
     </joint>
 
- <!--Gazebo definition-->
-    <!--Dofbot-->
-    <gazebo reference="arm_base_link">
-        <material>Gazebo/Black</material>
-    </gazebo>
-    <gazebo reference="arm_link_01">
-        <material>Gazebo/Green</material>
-    </gazebo>
-    <gazebo reference="arm_link_02">
-        <material>Gazebo/Green</material>
-    </gazebo>
-    <gazebo reference="arm_link_03">
-        <material>Gazebo/Green</material>
-    </gazebo>
-    <gazebo reference="arm_link_04">
-        <material>Gazebo/Green</material>
-    </gazebo>
-    <gazebo reference="arm_link_05">
-        <material>Gazebo/Green</material>
-    </gazebo>
-    <!--Gripper-->
-    <gazebo reference="rgrip_finger01">
-        <material>Gazebo/Grey</material>
-    </gazebo>
-    <gazebo reference="rgrip_finger02">
-        <material>Gazebo/Grey</material>
-    </gazebo>
-    <gazebo reference="rgrip_finger03">
-        <material>Gazebo/Grey</material>
-    </gazebo>
-    <gazebo reference="lgrip_finger01">
-        <material>Gazebo/Grey</material>
-    </gazebo>
-    <gazebo reference="lgrip_finger02">
-        <material>Gazebo/Grey</material>
-    </gazebo>
-    <gazebo reference="lgrip_finger03">
-        <material>Gazebo/Grey</material>
-    </gazebo>
-
- <!--Sensing-->
-
     <!-- Mono - camera sensor -->
     <link name="mono_link">
         <inertial>
-            <origin xyz="5.8458E-05 0.0095015 -0.0014824" rpy="0 0 0" />
-            <mass value="0.0097589" />
-            <inertia ixx="3.3488E-06" ixy="1.3667E-08" ixz="6.4235E-09" iyy="1.8662E-06" iyz="-1.0265E-07" izz="2.5696E-06" />
+            <origin xyz="5.8458E-05 0.0095015 -0.0014824" rpy="0 0 0"/>
+            <mass value="0.0097589"/>
+            <inertia ixx="3.3488E-06" ixy="1.3667E-08" ixz="6.4235E-09" iyy="1.8662E-06" iyz="-1.0265E-07"
+                     izz="2.5696E-06"/>
         </inertial>
         <visual>
-            <origin xyz="0 0 0" rpy="0 0 0" />
+            <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://dofbot_description/meshes/sensor/visual/mono_link.STL" />
+                <mesh filename="package://dofbot_description/meshes/sensor/visual/mono_link.STL"/>
             </geometry>
-            <material name="oxford_blue" />
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1"/>
+            </material>
         </visual>
         <collision>
-            <origin xyz="0 0 0" rpy="0 0 0" />
+            <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://dofbot_description/meshes/sensor/visual/mono_link.STL" />
+                <mesh filename="package://dofbot_description/meshes/sensor/visual/mono_link.STL"/>
             </geometry>
         </collision>
     </link>
+
+
     <joint name="mono_joint" type="fixed">
-        <origin xyz="-0.0481 -0.05145 -0.0022" rpy="1.5708 0 0" />
-        <parent link="arm_link_04" />
-        <child link="mono_link" />
+        <origin xyz="-0.0481 -0.05145 -0.0022" rpy="1.5708 0 0"/>
+        <parent link="arm_link_04"/>
+        <child link="mono_link"/>
     </joint>
 
- <!--Trasmisión-->
-    <transmission name="trans_arm_joint_01">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="arm_joint_01">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="arm_joint_01_motor">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>  
-
-    <transmission name="trans_arm_joint_02">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="arm_joint_02">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="arm_joint_02_motor">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-
-    <transmission name="trans_arm_joint_03">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="arm_joint_03">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="arm_joint_03_motor">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-
-    <transmission name="trans_arm_joint_04">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="arm_joint_04">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="arm_joint_04_motor">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-
-    <transmission name="trans_arm_joint_05">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="arm_joint_05">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="arm_joint_05_motor">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-
-    <transmission name="trans_grip_joint">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="grip_joint">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="grip_joint_motor">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-
-    <transmission name="trans_rfinger_joint_01">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="rfinger_joint_01">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="rfinger_joint_01_motor">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-
-    <transmission name="trans_rfinger_joint_02">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="rfinger_joint_02">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="rfinger_joint_02_motor">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-
-    <transmission name="trans_lfinger_grip_joint_01">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="lfinger_grip_joint_01">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="lfinger_grip_joint_01_motor">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-
-    <transmission name="trans_lfinger_grip_joint_02">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="lfinger_grip_joint_02">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="lfinger_grip_joint_02_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-
-    <transmission name="trans_lfinger_grip_joint_03">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="lfinger_grip_joint_03">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="lfinger_grip_joint_03_motor">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-
- <!--Pluging control-->
-    <gazebo>
-        <plugin name="control" filename="libgazebo_ros_control.so"/>
-    </gazebo>
-
+<!--
+    <joint name="mono_joint" type="revolute">
+        <origin xyz="-0.0481 -0.05145 -0.0022" rpy="1.5708 0 0"/>
+        <parent link="arm_link_04"/>
+        <child link="mono_link"/>
+        <axis xyz="0 0 1" />
+        <limit lower="0" upper="0" effort="0" velocity="0" />
+    </joint>-->
 
 </robot>
 

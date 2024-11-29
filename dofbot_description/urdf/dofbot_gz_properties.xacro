@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="dofbot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+
+
+    <gazebo reference="arm_base_link">
+        <material>Gazebo/FlatBlack</material>
+    </gazebo>
+
+    <gazebo reference="arm_link_01">
+        <material>Gazebo/Green</material>
+    </gazebo>
+
+    <gazebo reference="arm_link_02">
+        <material>Gazebo/Green</material>
+    </gazebo>
+
+    <gazebo reference="arm_link_03">
+        <material>Gazebo/Green</material>
+    </gazebo>
+
+    <gazebo reference="arm_link_04">
+        <material>Gazebo/Green</material>
+    </gazebo>
+
+    <gazebo reference="arm_link_05">
+        <material>Gazebo/FlatBlack</material>
+    </gazebo>
+
+    <gazebo reference="rgrip_finger01">
+        <material>Gazebo/SkyBlue</material>
+    </gazebo>
+
+    <gazebo reference="rgrip_finger02">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+    <gazebo reference="rgrip_finger03">
+        <material>Gazebo/BlueTransparent</material>
+    </gazebo>
+
+    <gazebo reference="lgrip_finger01">
+        <material>Gazebo/SkyBlue</material>
+    </gazebo>
+
+    <gazebo reference="lgrip_finger02">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+    <gazebo reference="lgrip_finger03">
+        <material>Gazebo/BlueTransparent</material>
+    </gazebo>
+
+    <gazebo reference="mono_link">
+        <material>Gazebo/LightBlueLaser</material>
+    </gazebo>
+    
+</robot>

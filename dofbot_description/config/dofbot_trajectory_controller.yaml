@@ -1,0 +1,43 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100 #Hz
+    dofbot_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+      # Note: Unlike forward_command_controller/ForwardCommandController
+      # with joint_trajectory_controller/JointTrajectoryController, the joint position is not instantaneously reached
+      
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+ 
+dofbot_trajectory_controller:
+  ros__parameters:
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+      #- effort
+    joints:
+      - arm_joint_01
+      - arm_joint_02
+      - arm_joint_03
+      - arm_joint_04
+      - arm_joint_05
+      - grip_joint
+      - rfinger_joint_01
+      - rfinger_joint_02
+      - lfinger_grip_joint_01
+      - lfinger_grip_joint_02
+      - lfinger_grip_joint_03
+
+    state_publish_rate: 50.0
+    action_monitor_rate: 20.0
+
+    allow_partial_joints_goal: false
+    open_loop_control: true
+    constraints:
+      stopped_velocity_tolerance: 0.01
+      goal_time: 0.0
+      joint1:
+        trajectory: 0.05
+        goal: 0.03
