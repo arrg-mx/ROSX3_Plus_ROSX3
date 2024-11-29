@@ -25,17 +25,10 @@ def generate_launch_description():
     
 
     
-    #gazebo = IncludeLaunchDescription(
-    #            PythonLaunchDescriptionSource([os.path.join(
-    #                get_package_share_directory('gazebo_ros'), 'launch'), '/gazebo.launch.py']),launch_arguments={'world': world}.items()
-    #         )
-    
-    gazebo = ExecuteProcess(
-            cmd=['gazebo', '--verbose', '-s', 'libgazebo_ros_factory.so', world],
-            output='screen'
-        )
-
-    #GZ_Factory = ExecuteProcess(cmd=['gazebo', '--verbose', '-s', 'libgazebo_ros_factory.so'])
+    gazebo = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory('gazebo_ros'), 'launch'), '/gazebo.launch.py']),launch_arguments={'world': world}.items()
+             )
     
     node_robot_state_publisher = Node(
         package='robot_state_publisher',
@@ -87,6 +80,7 @@ def generate_launch_description():
         #    )
         #),
         gazebo,
+        #gz2,
         rviz2_node,
         config_arg,
         node_robot_state_publisher,
