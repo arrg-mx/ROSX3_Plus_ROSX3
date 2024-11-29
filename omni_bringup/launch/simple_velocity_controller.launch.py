@@ -23,8 +23,6 @@ def generate_launch_description():
 
     world = os.path.join(get_package_share_directory('omni_bringup'),'world','Mundo_mesa_y_cajas.world')
     
-
-    
     gazebo = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory('gazebo_ros'), 'launch'), '/gazebo.launch.py']),launch_arguments={'world': world}.items()
@@ -35,36 +33,25 @@ def generate_launch_description():
         executable='robot_state_publisher',
         output='screen',
         parameters=[{'robot_description':robot_description}]
-    )#
+    )
 
     config_arg = DeclareLaunchArgument(name = 'rvizconfig', default_value = rviz_config_path)
-    #
+    
     rviz2_node = Node(
         package="rviz2",
         executable="rviz2",
         arguments=['-d', rviz_config_path]
     )
 
-    #joint_state_publisher = Node(
-    #    package='joint_state_publisher',
-    #    executable='joint_state_publisher'
-    #)
-
     spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
                         arguments=['-topic', 'robot_description',
                                    '-entity', 'omni'],
-                        output='screen')#
-    
-    #load_joint_state_controller = ExecuteProcess(
-    #    cmd=['ros2', 'control', 'load_controller', '--set-state', 'active',
-    #         'joint_state_broadcaster'],
-    #    output='screen' 
-    #)
+                        output='screen')
 
     wheel_controller = ExecuteProcess(
         cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'wheel_velocity_controller'],
         output='screen'
-    )#
+    )
     
     return LaunchDescription([
         RegisterEventHandler(
@@ -73,18 +60,9 @@ def generate_launch_description():
                 on_exit=[wheel_controller],
             )
         ),
-        #RegisterEventHandler(
-        #    event_handler=OnProcessExit(
-        #        target_action=load_joint_state_controller,
-        #        on_exit=[wheel_controller],
-        #    )
-        #),
         gazebo,
-        #gz2,
         rviz2_node,
         config_arg,
         node_robot_state_publisher,
         spawn_entity,
-        #joint_state_publisher,
-        #GZ_Factory,
     ])
