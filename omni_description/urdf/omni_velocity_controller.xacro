@@ -15,4 +15,6 @@
 
     <xacro:include filename="$(find ${package_name})/urdf/camera_sensor.xacro"/>
 
+    <xacro:include filename="$(find ${package_name})/urdf/imu_sensor.xacro"/>
+
 </robot>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<robot name="Omni_bot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <link name="imu_link"/>
+
+    <joint name="base_imu" type="fixed">
+        <parent link="base_link"/>
+        <child link="imu_link"/>
+        <origin xyz="-0.06 0.01 0.01" rpy="0 3.1415 1.5707"/>
+    </joint>
+
+</robot>
