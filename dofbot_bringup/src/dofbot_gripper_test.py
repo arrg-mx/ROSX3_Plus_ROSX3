@@ -5,21 +5,25 @@ from builtin_interfaces.msg import Duration
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 import time
 
-class ArmTrajectoryTest(Node):
+class GripperTrajectoryTest(Node):
 
     def __init__(self):
-        super().__init__('arm_trajectory_test')
-        topic_name = "/dofbot_trajectory_controller/joint_trajectory"
+        super().__init__('gripper_trajectory_test')
+        topic_name = "/dofbot_gripper_controller/joint_trajectory"
         self.trajectory_publisher = self.create_publisher(JointTrajectory, topic_name, 10)
-        self.joints = ['arm_joint_01', 'arm_joint_02', 'arm_joint_03', 'arm_joint_04', 'arm_joint_05']
+        self.joints = ['grip_joint', 'rfinger_joint_01', 'rfinger_joint_02', 'lfinger_grip_joint_01', 'lfinger_grip_joint_02', 'lfinger_grip_joint_03']
 
         self.goal_positions_list = [
-            [1.11, 0.83, -0.41, -1.55, -1.56],
-            [0.34, 0.82, 0.15, 0.94, 0.57],
-            [0.67, -1.23, 1.04, -0.56, 1.12],
-            [-1.45, 1.01, -0.89, 1.30, -1.57],
-            [1.22, -1.15, 1.39, -0.98, 0.47],
-            [-1.52, 1.54, -1.49, 1.5, 0.00]
+            [-1.54, 1.54, -1.54, 1.54, -1.54, 1.54],
+            [0.00, 0.00, 0.00, 0.00, 0.00, 0.00],
+            [-1.54, 1.54, -1.54, 1.54, -1.54, 1.54],
+            [0.00, 0.00, 0.00, 0.00, 0.00, 0.00],
+            [-1.54, 1.54, -1.54, 1.54, -1.54, 1.54],
+            [0.00, 0.00, 0.00, 0.00, 0.00, 0.00],
+            [-1.54, 1.54, -1.54, 1.54, -1.54, 1.54],
+            [0.00, 0.00, 0.00, 0.00, 0.00, 0.00],
+            [-1.54, 1.54, -1.54, 1.54, -1.54, 1.54],
+            [0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
         ]
 
         self.current_goal_index = 0
@@ -51,7 +55,7 @@ class ArmTrajectoryTest(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    trajectory_publisher_node = ArmTrajectoryTest()
+    trajectory_publisher_node = GripperTrajectoryTest()
     rclpy.spin(trajectory_publisher_node)
     trajectory_publisher_node.destroy_node()
     rclpy.shutdown()

@@ -75,6 +75,11 @@ def generate_launch_description():
         output='screen'
     )
 
+    dofbot_gripper_controller = ExecuteProcess(
+        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'dofbot_gripper_controller'],
+        output='screen'
+    )
+
     load_joint_state_controller = ExecuteProcess(
         cmd=['ros2', 'control', 'load_controller', '--set-state', 'active',
              'joint_state_broadcaster'],
@@ -94,6 +99,12 @@ def generate_launch_description():
             event_handler=OnProcessExit(
                 target_action=load_joint_state_controller,
                 on_exit=[dofbot_controller],
+            )
+        ),
+        RegisterEventHandler(
+            event_handler=OnProcessExit(
+                target_action=load_joint_state_controller,
+                on_exit=[dofbot_gripper_controller],
             )
         ),
         robot_state_publisher_node,

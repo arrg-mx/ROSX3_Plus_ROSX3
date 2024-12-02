@@ -28,6 +28,7 @@ ament_python_install_package(${PROJECT_NAME})
 # Install Python executables #They must start with the shebag tag
 install(PROGRAMS
   src/dofbot_trajectory_test.py
+  src/dofbot_gripper_test.py
   DESTINATION lib/${PROJECT_NAME} )
 
 ament_package()
