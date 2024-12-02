@@ -2,8 +2,6 @@
 
 <robot name="dofbot" xmlns:xacro="http://ros.org/wiki/xacro">
 
-
-
     <gazebo reference="arm_base_link">
         <material>Gazebo/FlatBlack</material>
     </gazebo>

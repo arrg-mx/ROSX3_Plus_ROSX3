@@ -8,10 +8,27 @@ controller_manager:
 
     dofbot_gripper_controller:
       type: joint_trajectory_controller/JointTrajectoryController
+
+    wheel_velocity_controller:
+      type: velocity_controllers/JointGroupVelocityController
       
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
  
+wheel_velocity_controller:
+  ros__parameters:
+    command_interfaces:
+      - velocity
+    state_interfaces:
+      - position
+      - velocity
+      #- effort
+    joints:
+      - front_left_joint
+      - front_right_joint
+      - back_right_joint
+      - back_left_joint
+
 dofbot_trajectory_controller:
   ros__parameters:
     command_interfaces:
@@ -72,3 +89,5 @@ dofbot_gripper_controller:
       joint1:
         trajectory: 0.05
         goal: 0.03
+
+
