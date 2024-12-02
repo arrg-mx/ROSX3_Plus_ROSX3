@@ -2,12 +2,161 @@
 <robot name="omni_dofbot" xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:include filename="$(find omni_description)/urdf/omni_urdf.xacro" />  
+  <!--
+  <xacro:include filename="$(find omni_dofbot_description)/urdf/dofbot_without_base_urdf.xacro" />-->
   <xacro:include filename="$(find dofbot_description)/urdf/dofbot_arm_urdf.xacro" />
+
+  <xacro:include filename="$(find omni_description)/urdf/camera_sensor.xacro" />
+  <xacro:include filename="$(find omni_description)/urdf/lidar_sensor.xacro" />
+
+  <xacro:include filename="$(find dofbot_description)/urdf/monocular_camera_sensor.xacro"/>
+  <xacro:include filename="$(find omni_description)/urdf/imu_sensor.xacro"/>
 
   <joint name="omni_to_dofbot_joint" type="fixed">
     <parent link="base_link" />
     <child link="arm_base_link" />
-    <origin xyz="0.1 0 0.15" rpy="0 0 -1.57" />
+    <origin xyz="0.045 0 0.055" rpy="0 0 -1.57" />
+
   </joint>
+
+
+
+  <ros2_control name="GazeboSystem_dofbot" type="system">
+      <hardware>
+          <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+      </hardware>
+      <joint name="arm_joint_01">
+          <command_interface name="position"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+      <joint name="arm_joint_02">
+          <command_interface name="position"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+      <joint name="arm_joint_03">
+          <command_interface name="position"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+
+      <joint name="arm_joint_04">
+          <command_interface name="position"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+      <joint name="arm_joint_05">
+          <command_interface name="position"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+      <joint name="grip_joint">
+          <command_interface name="position"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+
+      <joint name="rfinger_joint_01">
+          <command_interface name="position"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+      <joint name="rfinger_joint_02">
+          <command_interface name="position"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+      <joint name="lfinger_grip_joint_01">
+          <command_interface name="position"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+      <joint name="lfinger_grip_joint_02">
+          <command_interface name="position"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+      <joint name="lfinger_grip_joint_03">
+          <command_interface name="position"/>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+      </joint>
+      <joint name="front_left_joint"> <!-- M1 -->
+        <command_interface name="velocity"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+      <joint name="front_right_joint"> <!-- M2 -->
+        <command_interface name="velocity"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+      <joint name="back_right_joint"> <!-- M3 -->
+        <command_interface name="velocity"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+      <joint name="back_left_joint"> <!-- M4 -->
+        <command_interface name="velocity"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+      
+  
+  </ros2_control>
+
+  <!-- Omnidirectional plugin -->
+  <gazebo>
+    <plugin name="omni_controller_gz" filename="libgazebo_ros_planar_move.so"> <!-- 3 DOF plugin, (Vx,Vy,Wz) -->
+      <command_topic>cmd_vel</command_topic>
+      <odometry_topic>odom</odometry_topic>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_footprint</robot_base_frame>
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <update_rate>30</update_rate>
+    </plugin>
+  </gazebo>
+  
+  <!-- Plugin para visualizar correctamente las posiciones de las juntas en RViz -->
+  <gazebo>
+    <plugin name="joint_states_gz" filename="libgazebo_ros_joint_state_publisher.so">
+      <ros>
+        <remapping>~/out:=joint_states</remapping>
+      </ros>
+      <update_rate>30</update_rate>
+      <joint_name>front_left_joint</joint_name>
+      <joint_name>front_right_joint</joint_name>
+      <joint_name>back_right_joint</joint_name>
+      <joint_name>back_left_joint</joint_name>
+    </plugin>
+  </gazebo>
+  
+  
+  <!-- Plugin de control ROS 2 -->
+  <gazebo>
+    <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+      <robot_param>robot_description</robot_param>
+      <robot_param_node>robot_state_publisher</robot_param_node>
+      <parameters>$(find omni_dofbot_description)/config/omni_dofbot_controller.yaml</parameters>
+    </plugin>
+  </gazebo>
+
 
 </robot>
