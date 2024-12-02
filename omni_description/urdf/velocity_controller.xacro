@@ -1,7 +1,5 @@
-<?xml version="1.0"?>
-
+<?xml version="1.0" encoding="utf-8"?>
 <robot name="Omni_bot" xmlns:xacro="http://ros.org/wiki/xacro">
-
 
   <!-- Omnidirectional plugin -->
   <gazebo>
@@ -16,30 +14,26 @@
     </plugin>
   </gazebo>
   
-  
-  <!-- THIS PLUGIN IS USED TO CORRECTLY VISUALIZED JOINTS POSITION ON RVIZ -->
+  <!-- Plugin para visualizar correctamente las posiciones de las juntas en RViz -->
   <gazebo>
     <plugin name="joint_states_gz" filename="libgazebo_ros_joint_state_publisher.so">
       <ros>
         <remapping>~/out:=joint_states</remapping>
       </ros>
       <update_rate>30</update_rate>
-
       <joint_name>front_left_joint</joint_name>
       <joint_name>front_right_joint</joint_name>
       <joint_name>back_right_joint</joint_name>
       <joint_name>back_left_joint</joint_name>
-
     </plugin>
   </gazebo>
   
-  
-  <!-- PLUGING FOR SERVOMOTORS -->
-  <ros2_control name="GazeboSystem" type="system">
+  <!-- Plugin para servomotores -->
+  <ros2_control name="GazeboSystem_omni" type="system">
     <hardware>
       <plugin>gazebo_ros2_control/GazeboSystem</plugin>
     </hardware>
-    <!-- List of joints to be controlled -->
+    <!-- Lista de juntas a controlar -->
     <joint name="front_left_joint"> <!-- M1 -->
       <command_interface name="velocity"/>
       <state_interface name="position"/>
@@ -66,11 +60,12 @@
     </joint>
   </ros2_control>
   
-  
+  <!-- Plugin de control ROS 2 -->
   <gazebo>
-    <!-- ROS 2 control plugin -->
-    <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
-      <parameters>$(find ${package_name})/config/omni_velocity_controller.yaml</parameters>
+    <plugin name="gazebo_ros2_control_omni" filename="libgazebo_ros2_control.so">
+      <robot_param>robot_description</robot_param>
+      <robot_param_node>robot_state_publisher</robot_param_node>
+      <parameters>$(find omni_description)/config/omni_velocity_controller.yaml</parameters>
     </plugin>
   </gazebo>
 
