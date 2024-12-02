@@ -2,19 +2,19 @@
 <robot name="dofbot_camera" xmlns:xacro="http://ros.org/wiki/xacro" >
 
 
-    <link name="camera_link">
+    <link name="monocular_camera_link">
     </link>
 
     <joint name="base_camera_joint" type="fixed">
         <parent link="mono_link" />
-        <child link="camera_link" />
+        <child link="monocular_camera_link" />
         <origin xyz="0 0 0" rpy="3.14 -1.57 0"/>
     </joint>
 
 
 
   <!-- MONOCULAR CAMERA --> 
-  <gazebo reference="camera_link">
+  <gazebo reference="monocular_camera_link">
     <material>Gazebo/Orange</material>
     <sensor type="camera" name="camera"> 
       <always_on>true</always_on>
@@ -40,14 +40,14 @@
          <center>0.5 0.5</center>
        </distortion>
       </camera>
-        <plugin name="camera_plugin" filename="libgazebo_ros_camera.so">
+        <plugin name="monocular_camera_plugin" filename="libgazebo_ros_camera.so">
             <ros>
                 <!--namespace>/</namespace-->
                 <remapping>~/image_raw:=image_raw</remapping>
                 <remapping>~/camera_info:=camera_info</remapping>
             </ros>
             <camera_name>camera</camera_name>
-            <frame_name>camera_link</frame_name>
+            <frame_name>monocular_camera_link</frame_name>
             <hack_baseline>0.2</hack_baseline>
         </plugin>
     </sensor>
