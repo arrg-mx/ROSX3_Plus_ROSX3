@@ -5,4 +5,15 @@
 
     <xacro:include filename="$(find ${package_name})/urdf/omni_dofbot_urdf.xacro"/>    
 
+    <xacro:include filename="$(find dofbot_description)/urdf/dofbot_gz_properties.xacro"/>
+
+    <xacro:include filename="$(find omni_description)/urdf/omni_gz_properties.xacro"/>
+<!--    <xacro:include filename="$(find dofbot_description)/urdf/trajectory_controller.xacro"/>
+    
+    <xacro:include filename="$(find omni_description)/urdf/velocity_controller.xacro"/>
+-->
+
+
+
+
 </robot>
