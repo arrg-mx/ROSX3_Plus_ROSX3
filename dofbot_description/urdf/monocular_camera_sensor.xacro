@@ -11,8 +11,6 @@
         <origin xyz="0 0 0" rpy="3.14 -1.57 0"/>
     </joint>
 
-
-
   <!-- MONOCULAR CAMERA --> 
   <gazebo reference="monocular_camera_link">
     <material>Gazebo/Orange</material>
@@ -52,6 +50,5 @@
         </plugin>
     </sensor>
   </gazebo>
-
 
 </robot>

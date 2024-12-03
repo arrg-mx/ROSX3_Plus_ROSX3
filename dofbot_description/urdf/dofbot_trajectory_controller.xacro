@@ -11,5 +11,4 @@
 
     <xacro:include filename="$(find ${package_name})/urdf/monocular_camera_sensor.xacro"/>
 
-
 </robot>

@@ -74,8 +74,6 @@
             <state_interface name="velocity"/>
             <state_interface name="effort"/>
         </joint>
-        
-    
     </ros2_control>
 
     <!-- Pluging de control -->
@@ -86,7 +84,5 @@
             <parameters>$(find dofbot_description)/config/dofbot_trajectory_controller.yaml</parameters>
         </plugin>
     </gazebo>
-
-
 
 </robot>
