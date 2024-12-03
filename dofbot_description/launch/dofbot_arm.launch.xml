@@ -1,6 +1,6 @@
 <launch>
     <let name="urdf_path"
-        value="$(find-pkg-share dofbot_description)/urdf/dofbot_arm_urdf.xacro" />
+        value="$(find-pkg-share dofbot_description)/urdf/dofbot_trajectory_controller.xacro" />
     <let name="rviz_config"
         value="$(find-pkg-share dofbot_description)/rviz/dofbot_arm_rviz.rviz" />
     <node pkg="robot_state_publisher" exec="robot_state_publisher">

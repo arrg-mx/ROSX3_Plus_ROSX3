@@ -1,15 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot name="dofbot_camera" xmlns:xacro="http://ros.org/wiki/xacro" >
 
+  <!-- Mono - camera sensor -->
+  <link name="mono_link">
+      <inertial>
+          <origin xyz="5.8458E-05 0.0095015 -0.0014824" rpy="0 0 0"/>
+          <mass value="0.0097589"/>
+          <inertia ixx="3.3488E-06" ixy="1.3667E-08" ixz="6.4235E-09" iyy="1.8662E-06" iyz="-1.0265E-07"
+                    izz="2.5696E-06"/>
+      </inertial>
+      <visual>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry>
+              <mesh filename="package://dofbot_description/meshes/sensor/visual/mono_link.STL"/>
+          </geometry>
+          <material name="">
+              <color rgba="0.7 0.7 0.7 1"/>
+          </material>
+      </visual>
+      <collision>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry>
+              <mesh filename="package://dofbot_description/meshes/sensor/visual/mono_link.STL"/>
+          </geometry>
+      </collision>
+  </link>
 
-    <link name="monocular_camera_link">
-    </link>
+  <joint name="mono_joint" type="fixed">
+      <origin xyz="${mono_joint_xyz}" rpy="${mono_joint_rpy}"/>
+      <parent link="arm_link_04"/>
+      <child link="mono_link"/>
+  </joint>
 
-    <joint name="base_camera_joint" type="fixed">
-        <parent link="mono_link" />
-        <child link="monocular_camera_link" />
-        <origin xyz="0 0 0" rpy="3.14 -1.57 0"/>
-    </joint>
+
+  <link name="monocular_camera_link">
+  </link>
+
+  <joint name="base_camera_joint" type="fixed">
+      <parent link="mono_link" />
+      <child link="monocular_camera_link" />
+      <origin xyz="0 0 0" rpy="3.14 -1.57 0"/>
+  </joint>
 
   <!-- MONOCULAR CAMERA --> 
   <gazebo reference="monocular_camera_link">

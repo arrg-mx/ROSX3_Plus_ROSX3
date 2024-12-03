@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" >
+
+    <xacro:property name="mono_joint_xyz" value="-0.0482 -0.05145 -0.0022"/>
+    <xacro:property name="mono_joint_rpy" value="1.5708 0 0"/>
+
+</robot>
