@@ -26,13 +26,6 @@ dofbot_trajectory_controller:
       - arm_joint_03
       - arm_joint_04
       - arm_joint_05
-#      - grip_joint
-#      - rfinger_joint_01
-#      - rfinger_joint_02
-#      - lfinger_grip_joint_01
-#      - lfinger_grip_joint_02
-#      - lfinger_grip_joint_03
-
     state_publish_rate: 50.0
     action_monitor_rate: 20.0
 
