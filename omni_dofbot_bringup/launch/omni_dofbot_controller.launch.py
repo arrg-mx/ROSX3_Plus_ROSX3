@@ -24,7 +24,7 @@ def generate_launch_description():
 
     world = os.path.join(
         get_package_share_directory('omni_dofbot_bringup'),
-        'worlds',
+        'world',
         'Mundo_mesa_y_cajas.world'
     )
 
