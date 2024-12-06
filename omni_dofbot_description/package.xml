@@ -41,6 +41,7 @@
 
   <export>
     <build_type>ament_cmake</build_type>
-    <gazebo_ros gazebo_model_path = "$(find-pkg-share omni_description)/../install/omni_dofbot_description/share/"/>
+<!--    <gazebo_ros gazebo_model_path = "$(find-pkg-share omni_description)/../install/omni_dofbot_description/share/"/>-->
+    <gazebo_ros gazebo_model_path = "/home/robousr/ROS2Dev/TSR/proyecto_ws/install/dofbot_description/share/"/>
   </export>
 </package>

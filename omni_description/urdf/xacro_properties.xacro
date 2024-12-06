@@ -10,4 +10,17 @@
     <xacro:property name="imu_joint_xyz" value="-0.06 0.01 0.01"/>
     <xacro:property name="imu_joint_rpy" value="0 3.1415 1.5707"/>
 
+    <xacro:property name="base_link_xyz" value="0 0 0"/>
+    <xacro:property name="base_mesh" value="package://omni_description/meshes/X3/base_link.STL"/>
+
+    <xacro:property name="f_l_wheel_xyz" value="0.08 0.084492 -0.0389"/>
+    <xacro:property name="f_r_wheel_xyz" value="0.08 -0.0845 -0.0389"/>
+    <xacro:property name="b_l_wheel_xyz" value="-0.08 0.084492 -0.03954"/>
+    <xacro:property name="b_r_wheel_xyz" value="-0.08 -0.0845 -0.03946"/>
+
+    <xacro:property name="f_l_wheel" value="package://omni_description/meshes/X3/front_left_wheel.STL"/>
+    <xacro:property name="f_r_wheel" value="package://omni_description/meshes/X3/front_right_wheel.STL"/>
+    <xacro:property name="b_l_wheel" value="package://omni_description/meshes/X3/back_left_wheel.STL"/>
+    <xacro:property name="b_r_wheel" value="package://omni_description/meshes/X3/back_right_wheel.STL"/>
+
 </robot>

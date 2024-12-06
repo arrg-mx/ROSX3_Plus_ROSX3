@@ -5,13 +5,13 @@
 
     <xacro:property name="package_name" value="omni_description" />
     
+    <xacro:include filename="$(find ${package_name})/urdf/xacro_properties.xacro"/>
+    
     <xacro:include filename="$(find ${package_name})/urdf/omni_urdf.xacro"/>
 
     <xacro:include filename="$(find ${package_name})/urdf/omni_gz_properties.xacro"/>
 
     <xacro:include filename="$(find ${package_name})/urdf/velocity_controller.xacro"/>
-
-    <xacro:include filename="$(find ${package_name})/urdf/xacro_properties.xacro"/>
     
     <xacro:include filename="$(find ${package_name})/urdf/lidar_sensor.xacro"/>
 

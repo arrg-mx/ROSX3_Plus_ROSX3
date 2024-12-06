@@ -1,23 +1,72 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <robot name="omni_dofbot" xmlns:xacro="http://ros.org/wiki/xacro">
 
+  <xacro:include filename="$(find omni_dofbot_description)/urdf/xacro_properties.xacro" />
+
   <xacro:include filename="$(find omni_description)/urdf/omni_urdf.xacro" />  
   <!--
   <xacro:include filename="$(find omni_dofbot_description)/urdf/dofbot_without_base_urdf.xacro" />-->
   <xacro:include filename="$(find dofbot_description)/urdf/dofbot_arm_urdf.xacro" />
-
-  <xacro:include filename="$(find omni_dofbot_description)/urdf/xacro_properties.xacro" />
 
   <xacro:include filename="$(find omni_description)/urdf/camera_sensor.xacro" />
   <xacro:include filename="$(find omni_description)/urdf/lidar_sensor.xacro" />
   <xacro:include filename="$(find dofbot_description)/urdf/monocular_camera_sensor.xacro"/>
   <xacro:include filename="$(find omni_description)/urdf/imu_sensor.xacro"/>
 
-  <joint name="omni_to_dofbot_joint" type="fixed">
+  <joint name="omni_to_dofbot_joint" type="revolute">
     <parent link="base_link" />
     <child link="arm_base_link" />
-    <origin xyz="0.045 0 0.055" rpy="0 0 -1.57" />
-
+    <origin xyz="0.1025 0 0.031" rpy="0 0 -1.57" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="0" effort="1" velocity="1" />
   </joint>
+  <link name="mastil_link">
+    <visual>
+      <origin xyz="0 0 ${0.355/2}" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.02 0.04 0.355"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 ${0.355/2}"/>
+      <geometry>
+        <box size="0.02 0.04 0.355"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="base_to_mastil_joint" type="fixed">
+    <origin xyz="-0.035 0 0.0615" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="mastil_link"/>
+  </joint>
+
+  <link name="display_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://omni_dofbot_description/meshes/display_omni_dofbot.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="0 0.7 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://omni_dofbot_description/meshes/display_omni_dofbot.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="display_joint" type="fixed">
+    <parent link="mastil_link"/>
+    <child link="display_link"/>
+    <origin rpy="0 0 0" xyz="-0.07 0.0 0.265"/>
+  </joint>
+
 
 </robot>

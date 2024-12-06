@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <link name="arm_base_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/base_link.STL" />
+            </geometry>
+            <material name="eerie_black" />
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot/visual/base_link.STL" />
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-0.0304416859098744 4.23384368655101E-05 0.0448234503408059" rpy="0 0 0" />
+            <mass value="1.0754239466482" />
+            <inertia ixx="0.0208831789264125" ixy="2.4618093127858E-06" ixz="0.00616019290028669" iyy="0.0265621377486244" iyz="-1.10079499865282E-06" izz="0.0129535610833954" />
+        </inertial>
+    </link>
+
+</robot>

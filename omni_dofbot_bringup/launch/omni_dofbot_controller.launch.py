@@ -14,7 +14,7 @@ def generate_launch_description():
 
     # Ruta del archivo URDF
     urdf_path = os.path.join(get_package_share_path('omni_dofbot_description'),
-                             'urdf', 'omni_dofbot_trajectory_controller.xacro')
+                             'urdf', 'Fullxacro.xacro')
     # Ruta del archivo RVIZ
     rviz_config_path = os.path.join(get_package_share_path('omni_dofbot_bringup'),
                                     'rviz', 'omni_dofbot_trayectory_rviz.rviz')
