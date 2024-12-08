@@ -71,7 +71,7 @@
 
   </gazebo>
       <gazebo reference="laser_link" >
-        <material>Gazebo/Blue</material>
+        <material>Gazebo/Grey</material>
     </gazebo>
     
 </robot>
