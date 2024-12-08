@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--Aqui comienza el robot-->
-<robot name="dofbot" xmlns:xacro="http://ros.org/wiki/xacro" >
+<robot name="trajectory_controller" xmlns:xacro="http://ros.org/wiki/xacro" >
 
     <ros2_control name="GazeboSystem" type="system">
         <hardware>
