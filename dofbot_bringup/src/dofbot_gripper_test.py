@@ -15,12 +15,12 @@ class GripperTrajectoryTest(Node):
 
         self.goal_positions_list = [
             [-1.54, 1.54, -1.54, 1.54, -1.54, 1.54],
-            [0.00, 0.00, 0.00, 0.00, 0.00, 0.00],
+            [0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
         ]
 
         self.current_goal_index = 0
         self.trajectory_active = False
-        self.timer = self.create_timer(2, self.timer_callback)
+        self.timer = self.create_timer(3, self.timer_callback)
         self.get_logger().info('Controller is running and publishing to topic: {}'.format(topic_name))
 
     def timer_callback(self):
