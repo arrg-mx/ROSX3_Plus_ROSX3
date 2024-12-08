@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<robot name="dofbot_arm" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="dofbot_arm_urdf" xmlns:xacro="http://ros.org/wiki/xacro">
 
  <!--Material definition-->
     <material name="eerie_black">
