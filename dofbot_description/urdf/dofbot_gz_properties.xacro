@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<robot name="dofbot" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="dofbot_gz_properties" xmlns:xacro="http://ros.org/wiki/xacro">
 
     <gazebo reference="arm_base_link">
         <material>Gazebo/FlatBlack</material>
