@@ -6,8 +6,6 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /RobotModel1
-        - /TF1
       Splitter Ratio: 0.5
     Tree Height: 389
   - Class: rviz_common/Selection
@@ -97,10 +95,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        camera_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         lgrip_finger01:
           Alpha: 1
           Show Axes: false
@@ -121,6 +115,10 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        monocular_camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         rgrip_finger01:
           Alpha: 1
           Show Axes: false
@@ -161,8 +159,6 @@ Visualization Manager:
           Value: true
         arm_link_05:
           Value: true
-        camera_link:
-          Value: true
         lgrip_finger01:
           Value: true
         lgrip_finger02:
@@ -170,6 +166,8 @@ Visualization Manager:
         lgrip_finger03:
           Value: true
         mono_link:
+          Value: true
+        monocular_camera_link:
           Value: true
         rgrip_finger01:
           Value: true
@@ -200,7 +198,7 @@ Visualization Manager:
                     rgrip_finger03:
                       {}
                   mono_link:
-                    camera_link:
+                    monocular_camera_link:
                       {}
       Update Interval: 0
       Value: true
@@ -216,7 +214,7 @@ Visualization Manager:
         Durability Policy: Volatile
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /camera/image_raw
+        Value: /mono_camera/image_raw
       Value: true
   Enabled: true
   Global Options:
@@ -264,25 +262,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 1.4079995155334473
+      Distance: 0.9595122337341309
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.01228463463485241
-        Y: 0.015026044100522995
-        Z: 0.02051405794918537
+        X: -0.02821437455713749
+        Y: 0.09320534020662308
+        Z: 0.17055580019950867
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.4403981566429138
+      Pitch: 0.40039825439453125
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.608582973480225
+      Yaw: 5.5635833740234375
     Saved: ~
 Window Geometry:
   Displays:
