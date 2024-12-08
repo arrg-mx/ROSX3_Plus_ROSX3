@@ -72,10 +72,11 @@
         <plugin name="monocular_camera_plugin" filename="libgazebo_ros_camera.so">
             <ros>
                 <!--namespace>/</namespace-->
-                <remapping>~/image_raw:=image_raw</remapping>
-                <remapping>~/camera_info:=camera_info</remapping>
+                <remapping>~/image_raw:=/mono_camera/image_raw</remapping> 
+                <remapping>~/camera_info:=/mono_camera/camera_info</remapping> 
+
             </ros>
-            <camera_name>camera</camera_name>
+            <camera_name>mono_camera</camera_name>
             <frame_name>monocular_camera_link</frame_name>
             <hack_baseline>0.2</hack_baseline>
         </plugin>
