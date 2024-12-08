@@ -14,12 +14,12 @@ class ArmTrajectoryTest(Node):
         self.joints = ['arm_joint_01', 'arm_joint_02', 'arm_joint_03', 'arm_joint_04', 'arm_joint_05']
 
         self.goal_positions_list = [
-            [1.11, 0.83, -0.41, -1.55, -1.56],
-            [0.34, 0.82, 0.15, 0.94, 0.57],
-            [0.67, -1.23, 1.04, -0.56, 1.12],
-            [-1.45, 1.01, -0.89, 1.30, -1.57],
-            [1.22, -1.15, 1.39, -0.98, 0.47],
-            [-1.52, 1.54, -1.49, 1.5, 0.00]
+            [0.36, -1.08, -0.52, -0.59, 3.14],
+            [-1.08, 0.15, 1.53, 0.47, -0.14],
+            [1.07, 0.92, -1.38, -1.13, 1.25],
+            [-1.21, 0.18, 1.34, 0.43, -0.41],
+            [-0.95, 0.72, 0.21, -1.37, 3.14],
+            [-1.21, -0.77, -1.55, 0.81, 0.11]
         ]
 
         self.current_goal_index = 0
@@ -42,7 +42,7 @@ class ArmTrajectoryTest(Node):
         trajectory_msg.points.append(point)
         self.trajectory_publisher.publish(trajectory_msg)
         self.get_logger().info('Published trajectory: {}'.format(goal_positions))
-        self.create_timer(3, self.trajectory_complete_callback)  # Wait for the trajectory to complete
+        self.create_timer(10, self.trajectory_complete_callback)  # Wait for the trajectory to complete
 
     def trajectory_complete_callback(self):
         self.get_logger().info('Completed trajectory {}'.format(self.current_goal_index))
