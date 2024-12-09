@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="dofbot" xmlns:xacro="http://ros.org/wiki/xacro" >
+<robot name="dofbot_trajectory_controller" xmlns:xacro="http://ros.org/wiki/xacro" >
 
     <xacro:property name="package_name" value="dofbot_description"/>
 

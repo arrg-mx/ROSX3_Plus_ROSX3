@@ -1,6 +1,6 @@
 <launch>
     <let name="urdf_path"
-        value="$(find-pkg-share omni_dofbot_description)/urdf/omni_dofbot_urdf.xacro" />
+        value="$(find-pkg-share omni_dofbot_description)/urdf/omni_dofbot_trajectory_controller.xacro" />
     <let name="rviz_config"
         value="$(find-pkg-share omni_dofbot_description)/rviz/omni_dofbot_rviz.rviz" />
     <node pkg="robot_state_publisher" exec="robot_state_publisher">

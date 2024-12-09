@@ -23,9 +23,9 @@ def generate_launch_description():
     robot_description = ParameterValue(Command(['xacro ', urdf_path]), value_type=str)
 
     world = os.path.join(
-        get_package_share_directory('omni_dofbot_bringup'),
+        get_package_share_path('dofbot_bringup'),
         'world',
-        'Mundo_mesa_y_cajas.world'
+        'test_world.world'
     )
 
     # Gazebo
