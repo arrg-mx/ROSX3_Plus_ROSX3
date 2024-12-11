@@ -113,8 +113,10 @@ Una vez spawneado el robot en gazebo y rviz podemos usar los scripts de los cont
 $ ros2 run dofbot_bringup dofbot_trajectory_test.py 
 ```
 
-**¿Problemas con el modelo en gazebo?**
-### Solución 1.
+## Notas
+### Gazebo
+Si se presentan problemas al visualizar las mallas en Gazebo:
+#### Solución 1.
 En caso de que tengas problemas para visualizar el robot en gazebo, puedes modificar la ruta de gazebo model path que se encuentra en los metadatos del archivo package.xml de cada paquete de description, el fragmento que debes modificar es el siguiente. Deberas hacer esto para los 3 paquetes de description.
 
 ```xml
@@ -124,6 +126,6 @@ En caso de que tengas problemas para visualizar el robot en gazebo, puedes modif
   </export>
 ```
 
-### Solución 2.
+#### Solución 2.
 Copiar directamente las 3 carpetas de description al directorio ~/.gazebo/models.
 
