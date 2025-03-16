@@ -52,12 +52,25 @@ def generate_launch_description():
         cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'wheel_velocity_controller'],
         output='screen'
     )
+
+
+    load_joint_state_controller = ExecuteProcess(
+        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active',
+             'joint_state_broadcaster'],
+        output='screen' 
+    )
     
     return LaunchDescription([
         RegisterEventHandler(
             event_handler=OnProcessExit(
                 target_action=spawn_entity,
                 on_exit=[wheel_controller],
+            )
+        ),
+        RegisterEventHandler(
+            event_handler=OnProcessExit(
+                target_action=wheel_controller,
+                on_exit=[load_joint_state_controller],
             )
         ),
         gazebo,
