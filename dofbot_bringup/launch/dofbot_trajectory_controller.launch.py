@@ -57,11 +57,6 @@ def generate_launch_description():
     )
     '''
 
-    joint_state_publisher = Node(
-        package="joint_state_publisher",
-        executable="joint_state_publisher"
-    )
-
     #Ejecucion del nodo de RVIZ
     config_arg = DeclareLaunchArgument(name = 'rvizconfig', default_value = rviz_config_path)
     rviz2_node = Node(
@@ -108,7 +103,6 @@ def generate_launch_description():
             )
         ),
         robot_state_publisher_node,
-        joint_state_publisher,
         config_arg,
         rviz2_node,
         gazebo,
