@@ -6,9 +6,10 @@ controller_manager:
       type: velocity_controllers/JointGroupVelocityController
       # Note: the joint velocity is instantaneously reached
       
-    #joint_state_broadcaster:
-     # type: joint_state_broadcaster/JointStateBroadcaster
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
      #THIS IS NOT REQUIRED BECAUSE GAZEBO PUGIN PUBLISHES JOINT STATES, BUT VELOCITY AND EFFORT ARE NOT PUBLISHED
+     #aun así lo agrego por si acaso xd
  
 wheel_velocity_controller:
   ros__parameters:
