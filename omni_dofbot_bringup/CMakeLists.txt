@@ -18,7 +18,7 @@ find_package(control_msgs REQUIRED) #for ros control
 #find_package(rclcpp_action REQUIRED) #for ros control actions
 
 install(
-  DIRECTORY launch rviz world src
+  DIRECTORY launch rviz world
   DESTINATION share/${PROJECT_NAME}/
 )
 
